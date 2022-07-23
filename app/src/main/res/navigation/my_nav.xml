@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/onBoadFragment">
+    <fragment
+        android:id="@+id/congratFragment"
+        android:name="com.example.baseproject.fragment.CongratFragment"
+        android:label="fragment_congrat"
+        tools:layout="@layout/fragment_congrat" >
+        <argument
+            android:name="point"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.baseproject.fragment.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+
+<!--        <argument-->
+<!--            android:name="myArg"-->
+<!--            app:argType="string" />-->
+        <action
+            android:id="@+id/action_introFragment_to_quizzFragment"
+            app:destination="@id/quizzFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizzFragment"
+        android:name="com.example.baseproject.fragment.QuizzFragment"
+        android:label="fragment_quizz"
+        tools:layout="@layout/fragment_quizz" >
+        <action
+            android:id="@+id/action_quizzFragment_to_congratFragment"
+            app:destination="@id/congratFragment" />
+        <action
+            android:id="@+id/action_quizzFragment_to_failFragment"
+            app:destination="@id/failFragment" />
+        <action
+            android:id="@+id/action_quizzFragment_to_onBoadFragment"
+            app:destination="@id/onBoadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoadFragment"
+        android:name="com.example.baseproject.fragment.OnBoadFragment"
+        android:label="fragment_on_boad"
+        tools:layout="@layout/fragment_on_boad" >
+        <action
+            android:id="@+id/action_onBoadFragment_to_introFragment"
+            app:destination="@id/introFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/failFragment"
+        android:name="com.example.baseproject.fragment.FailFragment"
+        android:label="fragment_fail"
+        tools:layout="@layout/fragment_fail" />
+</navigation>
