@@ -39,7 +39,10 @@
             app:destination="@id/failFragment" />
         <action
             android:id="@+id/action_quizzFragment_to_onBoadFragment"
-            app:destination="@id/onBoadFragment" />
+            app:destination="@id/onBoadFragment"
+            app:popUpTo="@id/onBoadFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/onBoadFragment"

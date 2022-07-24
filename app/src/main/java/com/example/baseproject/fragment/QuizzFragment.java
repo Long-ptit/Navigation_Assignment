@@ -21,32 +21,31 @@ import com.example.baseproject.R;
 public class QuizzFragment extends Fragment {
 
     private NavController mNavigationController;
-
+    private View mView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_quizz, container, false);
-        view.findViewById(R.id.btn_true).setOnClickListener(new View.OnClickListener() {
+        mView = inflater.inflate(R.layout.fragment_quizz, container, false);
+        mView.findViewById(R.id.btn_true).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(view);
-                mNavigationController = Navigation.findNavController(view);
-                navController.navigate(QuizzFragmentDirections.actionQuizzFragmentToCongratFragment(100));
+                Navigation
+                        .findNavController(mView)
+                        .navigate(QuizzFragmentDirections
+                                .actionQuizzFragmentToCongratFragment(100));
             }
         });
 
-        view.findViewById(R.id.btn_false).setOnClickListener(new View.OnClickListener() {
+        mView.findViewById(R.id.btn_false).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(view);
-
-                navController.navigate(R.id.action_quizzFragment_to_failFragment );
+                Navigation.findNavController(mView).navigate(R.id.action_quizzFragment_to_failFragment);
             }
         });
         setHasOptionsMenu(true);
-        return view;
+        return mView;
     }
 
     @Override
@@ -57,7 +56,10 @@ public class QuizzFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        mNavigationController.popBackStack(R.id.fragmentContainerView, true);
+        if (item.getItemId() == R.id.onBoadFragment) {
+            Navigation.findNavController(mView).navigate(R.id.action_quizzFragment_to_onBoadFragment);
+            return true;
+        }
         return NavigationUI.onNavDestinationSelected(item, NavHostFragment.findNavController(this)) || super.onOptionsItemSelected(item);
     }
 }

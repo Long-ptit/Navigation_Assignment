@@ -31,9 +31,6 @@ public class OnBoadFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(OnBoadFragmentDirections.actionOnBoadFragmentToIntroFragment());
-             //   Navigation.findNavController(view).navigate(In);
-
-
             }
         });
 
